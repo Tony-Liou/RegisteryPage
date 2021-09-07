@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Registry User</title>
+    <title>Registry Full User</title>
 
     <!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">-->
 
@@ -63,7 +63,7 @@
                                 class="accordion-button"
                                 data-bs-target="#succAuthzCollapse"
                                 data-bs-toggle="collapse" type="button">
-                            成功-Email
+                            成功
                         </button>
 
                         <div class="accordion-collapse collapse show" id="succAuthzCollapse">
@@ -72,47 +72,26 @@
 
                                 <div class="my-3">
                                     <div class="form-check">
+                                        <input class="form-check-input" id="email" name="paymentMethod"
+                                               type="checkbox">
                                         <label class="form-check-label">Email</label>
                                         <input class="form-control" id="succauthz-email" name="emailAddress"
                                                placeholder="欲使用預設值請留空" type="email">
                                     </div>
-                                </div>
-
-                                <h5 class="my-3">通知頻率</h5>
-
-                                <div class="my-3">
                                     <div class="form-check">
-                                        <select class="form-select" id="freq">
-                                            <option value="">Choose...</option>
-                                            <option>每分鐘</option>
-                                            <option>每小時</option>
-                                            <option>每天</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid time.
-                                        </div>
+                                        <input class="form-check-input" id="sms" name="paymentMethod"
+                                               type="checkbox">
+                                        <label class="form-check-label">簡訊</label>
+                                        <input class="form-control" name="smsNumber" placeholder="欲使用預設值請留空" type="tel">
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button aria-controls="succAuthzCollapse" aria-expanded="true"
-                                class="accordion-button"
-                                data-bs-target="#succAuthzCollapse"
-                                data-bs-toggle="collapse" type="button">
-                            成功-Webhook
-                        </button>
-
-                        <div class="accordion-collapse collapse show" id="succAuthzCollapse">
-                            <div class="accordion-body">
-                                <h5 class="my-3">通知方式</h5>
-
-                                <div class="my-3">
                                     <div class="form-check">
+                                        <input class="form-check-input" id="webhook" name="paymentMethod"
+                                               type="checkbox">
                                         <label class="form-check-label">Webhook</label>
                                         <select class="form-select" id="webhook1" onchange="webhookOption(this)">
                                             <option value="">Select one...</option>
+                                            <option value="Slack">Slack</option>
+                                            <option value="Microsoft Teams">Microsoft Teams</option>
                                             <option value="Line">LINE</option>
                                         </select>
                                         <div class="form-floating collapse">
@@ -150,7 +129,7 @@
                                 class="accordion-button collapsed"
                                 data-bs-target="#failAuthzCollapse"
                                 data-bs-toggle="collapse" type="button">
-                            失敗-簡訊
+                            失敗
                         </button>
 
                         <div class="accordion-collapse collapse" id="failAuthzCollapse">
@@ -159,9 +138,22 @@
 
                                 <div class="my-3">
                                     <div class="form-check">
+                                        <input class="form-check-input" id="email" name="paymentMethod"
+                                               type="checkbox">
+                                        <label class="form-check-label">Email</label>
+                                        <input class="form-control" name="emailAddress" type="email">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="sms" name="paymentMethod"
+                                               type="checkbox">
                                         <label class="form-check-label">簡訊</label>
-                                        <input class="form-control" id="failauthz-email" name="smsNumber"
-                                               placeholder="欲使用預設值請留空" type="email">
+                                        <input class="form-control" name="smsNumber" type="tel">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="webhook" name="paymentMethod"
+                                               type="checkbox">
+                                        <label class="form-check-label">Webhook</label>
+                                        <input class="form-control" name="webhookUrl" type="url">
                                     </div>
                                 </div>
 
@@ -194,7 +186,7 @@
                                 class="accordion-button collapsed"
                                 data-bs-target="#succinvoiceCollapse"
                                 data-bs-toggle="collapse" type="button">
-                            成功-Webhook
+                            成功
                         </button>
 
                         <div class="accordion-collapse collapse" id="succinvoiceCollapse">
@@ -203,20 +195,24 @@
 
                                 <div class="my-3">
                                     <div class="form-check">
+                                        <input class="form-check-input" id="email" name="paymentMethod"
+
+                                               type="checkbox">
+                                        <label class="form-check-label">Email</label>
+                                        <input class="form-control" name="emailAddress" type="email">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="sms" name="paymentMethod"
+                                               type="checkbox">
+                                        <label class="form-check-label">簡訊</label>
+                                        <input class="form-control" name="smsNumber" type="tel">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="webhook" name="paymentMethod"
+
+                                               type="checkbox">
                                         <label class="form-check-label">Webhook</label>
-                                        <select class="form-select" id="webhook1" onchange="webhookOption(this)">
-                                            <option value="">Select one...</option>
-                                            <option value="Line">LINE</option>
-                                        </select>
-                                        <div class="form-floating collapse">
-                                            <input class="form-control" id="webhookUrl" name="webhookurl"
-                                                   placeholder="https://cybersoft.com" type="url">
-                                            <label for="webhookUrl">Webhook URL</label>
-                                        </div>
-                                        <div class="collapse">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/QRcode_image.svg"/>
-                                            <p></p>
-                                        </div>
+                                        <input class="form-control" name="webhookUrl" type="url">
                                     </div>
                                 </div>
 
@@ -238,6 +234,60 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-item">
+                        <button aria-controls="failInvoiceCollapse" aria-expanded="false"
+                                class="accordion-button collapsed"
+                                data-bs-target="#failInvoiceCollapse"
+                                data-bs-toggle="collapse" type="button">
+                            失敗
+                        </button>
+
+                        <div class="accordion-collapse collapse" id="failInvoiceCollapse">
+                            <div class="accordion-body">
+                                <h5 class="my-3">通知方式</h5>
+
+                                <div class="my-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="email" name="paymentMethod"
+
+                                               type="checkbox">
+                                        <label class="form-check-label">Email</label>
+                                        <input class="form-control" name="emailAddress" type="email">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="sms" name="paymentMethod"
+                                               type="checkbox">
+                                        <label class="form-check-label">簡訊</label>
+                                        <input class="form-control" name="smsNumber" type="tel">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="webhook" name="paymentMethod"
+
+                                               type="checkbox">
+                                        <label class="form-check-label">Webhook</label>
+                                        <input class="form-control" name="webhookUrl" type="url">
+                                    </div>
+                                </div>
+
+                                <h5 class="my-3">通知頻率</h5>
+
+                                <div class="my-3">
+                                    <div class="form-check">
+                                        <select class="form-select" id="freq">
+                                            <option value="">Choose...</option>
+                                            <option>每分鐘</option>
+                                            <option>每小時</option>
+                                            <option>每天</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid time.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </fieldset>
             </div>
 
