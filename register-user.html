@@ -100,7 +100,7 @@
                         <legend>簡訊</legend>
                         <div class="table-responsive">
                             <table class="table table-hover caption-top" id="smsTable">
-<!--                                <caption>Phone</caption>-->
+                                <!--                                <caption>Phone</caption>-->
                                 <thead class="table-dark container">
                                 <tr class="row-cols-12">
                                     <th class="col-3" scope="col">名稱</th>
@@ -150,8 +150,22 @@
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Instant Messengers</legend>
-                        <div class="table-responsive">
+                        <legend>LINE</legend>
+                        <div class="d-flex justify-content-center">
+                            <div class="align-middle">
+                                <img alt="LINE QR code" class="img-fluid" src="assets/img/line-qrcode.png">
+                                <p id="personalToken">Token:</p>
+                            </div>
+                        </div>
+
+                        <h3>操作說明</h3>
+                        <ol>
+                            <li>掃描QR Code 加入官方帳號</li>
+                            <li>複製頁面上的身份驗證碼，並傳送給機器人即完成身份認證</li>
+                        </ol>
+
+
+                        <!--<div class="table-responsive">
                             <table class="table table-hover caption-top" id="lineTable">
                                 <caption>LINE</caption>
                                 <thead class="table-dark container">
@@ -163,7 +177,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <!--<tr>
+                                &lt;!&ndash;<tr>
                                     <td>
                                         <input class="form-control" required type="text">
                                     </td>
@@ -182,7 +196,7 @@
                                             <i class="bi bi-trash">刪除</i>
                                         </button>
                                     </td>
-                                </tr>-->
+                                </tr>&ndash;&gt;
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -193,7 +207,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                        </div>
+                        </div>-->
                     </fieldset>
 
                     <!--<div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
@@ -285,6 +299,8 @@
 
             <div class="row">
                 <div class="col">
+                    <hr class="my-4">
+
                     <button class="w-100 btn btn-primary" type="submit">Submit</button>
                 </div>
             </div>
@@ -348,10 +364,11 @@
                 }
 
                 const row = table.getElementsByTagName('tbody')[0].insertRow();
-                row.innerHTML = rowTemplate('event' + globalCount.toString(10) , '', type);
+                row.innerHTML = rowTemplate('event' + globalCount.toString(10), '', type);
                 globalCount++;
             });
         });
+        document.getElementById('personalToken').innerHTML = `<b>Token: ${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}</b>`;
     })();
 
     function rowTemplate(eventListId, defaultName = '', inputType = 'text') {
