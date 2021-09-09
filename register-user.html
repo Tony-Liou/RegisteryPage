@@ -3,28 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Registry User</title>
+    <title>Registry admin</title>
 
     <!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">-->
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
         .container {
             max-width: 960px;
         }
@@ -38,8 +25,8 @@
             <h3 class="float-md-start mb-0">CyberSoft Notification</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a aria-current="page" class="nav-link active" href="#">Register</a>
+                <a class="nav-link" href="register-admin.html">Admin register</a>
+                <a aria-current="page" class="nav-link active" href="#">User register</a>
             </nav>
         </div>
     </header>
@@ -48,203 +35,256 @@
         <div class="py-5 text-center">
             <img alt="logo" class="d-block mx-auto mb-4" height="60"
                  src="https://www.cybersoft4u.com/images/layout/logo.png">
-            <h2>通知方式註冊表單</h2>
+            <h2>註冊表單</h2>
             <p class="lead">根據需求選擇需要的項目並送出</p>
         </div>
 
 
         <form class="needs-validation" novalidate>
             <div class="row g-5">
-                <fieldset class="col-lg col-md">
-                    <legend><h3>授權</h3></legend>
-
-                    <div class="accordion-item">
-                        <button aria-controls="succAuthzCollapse" aria-expanded="true"
-                                class="accordion-button"
-                                data-bs-target="#succAuthzCollapse"
-                                data-bs-toggle="collapse" type="button">
-                            成功-Email
-                        </button>
-
-                        <div class="accordion-collapse collapse show" id="succAuthzCollapse">
-                            <div class="accordion-body">
-                                <h5 class="my-3">通知方式</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">Email</label>
-                                        <input class="form-control" id="succauthz-email" name="emailAddress"
-                                               placeholder="欲使用預設值請留空" type="email">
-                                    </div>
-                                </div>
-
-                                <h5 class="my-3">通知頻率</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <select class="form-select" id="freq">
-                                            <option value="">Choose...</option>
-                                            <option>每分鐘</option>
-                                            <option>每小時</option>
-                                            <option>每天</option>
-                                        </select>
+                <div class="col-md">
+                    <fieldset>
+                        <legend>信箱</legend>
+                        <div class="table-responsive">
+                            <table class="table table-hover caption-top" id="emailTable">
+                                <caption>Email</caption>
+                                <thead class="table-dark container">
+                                <tr class="row-cols-12">
+                                    <th class="col-3" scope="col">名稱</th>
+                                    <th class="col-5" scope="col">Email</th>
+                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col" scope="col">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--<tr>
+                                    <td>
+                                        <input class="form-control" required type="text">
                                         <div class="invalid-feedback">
-                                            Please provide a valid time.
+                                            Name is required.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" required type="email">
+                                        <div class="invalid-feedback">
+                                            Please provide a valid email.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-target="#staticBackdrop"
+                                                data-bs-toggle="modal"
+                                                type="button">
+                                            <i class="bi bi-card-checklist">事件</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" type="button">
+                                            <i class="bi bi-trash">刪除</i>
+                                        </button>
+                                    </td>
+                                </tr>-->
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="100%">
+                                        <button class="btn btn-success" type="button"><i
+                                                class="bi bi-plus">新增</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>簡訊</legend>
+                        <div class="table-responsive">
+                            <table class="table table-hover caption-top" id="smsTable">
+<!--                                <caption>Phone</caption>-->
+                                <thead class="table-dark container">
+                                <tr class="row-cols-12">
+                                    <th class="col-3" scope="col">名稱</th>
+                                    <th class="col-5" scope="col">電話號碼</th>
+                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col" scope="col">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--<tr>
+                                    <td>
+                                        <input class="form-control" required type="text">
+                                        <div class="invalid-feedback">
+                                            Name is required.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" required type="email">
+                                        <div class="invalid-feedback">
+                                            Please provide a valid email.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-target="#staticBackdrop"
+                                                data-bs-toggle="modal"
+                                                type="button">
+                                            <i class="bi bi-card-checklist">事件</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" type="button">
+                                            <i class="bi bi-trash">刪除</i>
+                                        </button>
+                                    </td>
+                                </tr>-->
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="100%">
+                                        <button class="btn btn-success" type="button"><i
+                                                class="bi bi-plus">新增</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Instant Messengers</legend>
+                        <div class="table-responsive">
+                            <table class="table table-hover caption-top" id="lineTable">
+                                <caption>LINE</caption>
+                                <thead class="table-dark container">
+                                <tr class="row-cols-12">
+                                    <th class="col-3" scope="col">名稱</th>
+                                    <th class="col-5" scope="col">Webhook URL</th>
+                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col" scope="col">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--<tr>
+                                    <td>
+                                        <input class="form-control" required type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" required type="url">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-target="#staticBackdrop"
+                                                data-bs-toggle="modal"
+                                                type="button">
+                                            <i class="bi bi-card-checklist">事件</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" type="button">
+                                            <i class="bi bi-trash">刪除</i>
+                                        </button>
+                                    </td>
+                                </tr>-->
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="100%">
+                                        <button class="btn btn-success" type="button"><i class="bi bi-plus">新增</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </fieldset>
+
+                    <!--<div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
+                         id="staticBackdrop" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title">選擇事件</h5>
+                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                            type="button"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="accordion-item">
+                                        <button aria-controls="succAuthzCollapse" aria-expanded="true"
+                                                class="accordion-button"
+                                                data-bs-target="#succAuthzCollapse"
+                                                data-bs-toggle="collapse" type="button">
+                                            授權
+                                        </button>
+
+                                        <div class="accordion-collapse collapse show" id="succAuthzCollapse">
+                                            <div class="accordion-body">
+                                                <div class="my-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="authzStart" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">開始</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="authzSucc" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">成功</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="authzFail" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">失敗</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="accordion-item">
+                                        <button aria-controls="failAuthzCollapse" aria-expanded="false"
+                                                class="accordion-button collapsed"
+                                                data-bs-target="#failAuthzCollapse"
+                                                data-bs-toggle="collapse" type="button">
+                                            請款
+                                        </button>
+
+                                        <div class="accordion-collapse collapse" id="failAuthzCollapse">
+                                            <div class="accordion-body">
+                                                <div class="my-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="invoiceStart" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">開始</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="invoiceSucc" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">成功</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" id="invoiceFail" name="eventStatus"
+                                                               type="checkbox">
+                                                        <label class="form-check-label">失敗</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+                                        Discard
+                                    </button>
+                                    <button class="btn btn-outline-primary" data-bs-target="#staticBackdrop"
+                                            data-bs-toggle="modal"
+                                            type="button">Save changes
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button aria-controls="succAuthzCollapse" aria-expanded="true"
-                                class="accordion-button"
-                                data-bs-target="#succAuthzCollapse"
-                                data-bs-toggle="collapse" type="button">
-                            成功-Webhook
-                        </button>
-
-                        <div class="accordion-collapse collapse show" id="succAuthzCollapse">
-                            <div class="accordion-body">
-                                <h5 class="my-3">通知方式</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">Webhook</label>
-                                        <select class="form-select" id="webhook1" onchange="webhookOption(this)">
-                                            <option value="">Select one...</option>
-                                            <option value="Line">LINE</option>
-                                        </select>
-                                        <div class="form-floating collapse">
-                                            <input class="form-control" id="webhookUrl" name="webhookurl"
-                                                   placeholder="https://cybersoft.com" type="url">
-                                            <label for="webhookUrl">Webhook URL</label>
-                                        </div>
-                                        <div class="collapse">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/QRcode_image.svg"/>
-                                            <p></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h5 class="my-3">通知頻率</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <select class="form-select" id="freq">
-                                            <option value="">Choose...</option>
-                                            <option>每分鐘</option>
-                                            <option>每小時</option>
-                                            <option>每天</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid time.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button aria-controls="failAuthzCollapse" aria-expanded="false"
-                                class="accordion-button collapsed"
-                                data-bs-target="#failAuthzCollapse"
-                                data-bs-toggle="collapse" type="button">
-                            失敗-簡訊
-                        </button>
-
-                        <div class="accordion-collapse collapse" id="failAuthzCollapse">
-                            <div class="accordion-body">
-                                <h5 class="my-3">通知方式</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">簡訊</label>
-                                        <input class="form-control" id="failauthz-email" name="smsNumber"
-                                               placeholder="欲使用預設值請留空" type="email">
-                                    </div>
-                                </div>
-
-                                <h5 class="my-3">通知頻率</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <select class="form-select" id="freq">
-                                            <option value="">Choose...</option>
-                                            <option>每分鐘</option>
-                                            <option>每小時</option>
-                                            <option>每天</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid time.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </fieldset>
-
-                <fieldset class="col-lg col-md">
-                    <legend><h3>請款</h3></legend>
-
-                    <div class="accordion-item">
-                        <button aria-controls="succinvoiceCollapse" aria-expanded="false"
-                                class="accordion-button collapsed"
-                                data-bs-target="#succinvoiceCollapse"
-                                data-bs-toggle="collapse" type="button">
-                            成功-Webhook
-                        </button>
-
-                        <div class="accordion-collapse collapse" id="succinvoiceCollapse">
-                            <div class="accordion-body">
-                                <h5 class="my-3">通知方式</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">Webhook</label>
-                                        <select class="form-select" id="webhook1" onchange="webhookOption(this)">
-                                            <option value="">Select one...</option>
-                                            <option value="Line">LINE</option>
-                                        </select>
-                                        <div class="form-floating collapse">
-                                            <input class="form-control" id="webhookUrl" name="webhookurl"
-                                                   placeholder="https://cybersoft.com" type="url">
-                                            <label for="webhookUrl">Webhook URL</label>
-                                        </div>
-                                        <div class="collapse">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/QRcode_image.svg"/>
-                                            <p></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h5 class="my-3">通知頻率</h5>
-
-                                <div class="my-3">
-                                    <div class="form-check">
-                                        <select class="form-select" id="freq">
-                                            <option value="">Choose...</option>
-                                            <option>每分鐘</option>
-                                            <option>每小時</option>
-                                            <option>每天</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid time.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
+                    </div>-->
+                </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <hr class="my-4">
-
                     <button class="w-100 btn btn-primary" type="submit">Submit</button>
                 </div>
             </div>
@@ -267,70 +307,166 @@
 <script src="form-validation.js"></script>
 
 <script>
+    'use strict';
+
+    let globalCount = 0;
+
     (function () {
-        const collapseBodies = document.querySelectorAll('div[class="accordion-collapse collapse"]');
+        const tables = [...document.getElementsByTagName('table')];
+        tables.forEach(table => {
+            // Delete a row
+            table.addEventListener('click', function (ev) {
+                if (!ev.target) {
+                    return;
+                }
 
-        collapseBodies.forEach(ele => {
-            ele.addEventListener('show.bs.collapse', function (ev) {
-                const checkbox = ele.previousElementSibling.querySelector('input[type="checkbox"]');
-
-                if (!checkbox.checked) {
-                    return ev.preventDefault();
+                if (ev.target.nodeName === 'BUTTON' && ev.target.firstElementChild && ev.target.firstElementChild.matches('i.bi.bi-trash')) {
+                    const row = ev.target.parentNode.parentNode;
+                    row.parentNode.removeChild(row);
+                } else if (ev.target.matches('button > i.bi.bi-trash')) {
+                    const row = ev.target.parentNode.parentNode.parentNode;
+                    row.parentNode.removeChild(row);
                 }
             });
-        });
 
-        const urlSearchParams = new URLSearchParams(window.location.search);
-        const param = urlSearchParams.getAll('');
+            const btnAdd = table.querySelector('tfoot button');
+            // Add a row
+            btnAdd.addEventListener('click', function () {
+                let type;
+                switch (table.id) {
+                    case 'emailTable':
+                        type = 'email';
+                        break;
+                    case 'smsTable':
+                        type = 'tel';
+                        break;
+                    case 'lineTable':
+                        type = 'url';
+                        break;
+                    default:
+                        type = 'text';
+                }
+
+                const row = table.getElementsByTagName('tbody')[0].insertRow();
+                row.innerHTML = rowTemplate('event' + globalCount.toString(10) , '', type);
+                globalCount++;
+            });
+        });
     })();
 
-    function webhookOption(selectObj) {
-        const webhookUrlDiv = selectObj.nextElementSibling;
-        const urlClassAttr = webhookUrlDiv.getAttribute('class');
-        const qrCodeDiv = webhookUrlDiv.nextElementSibling;
-        const qrClassAttr = qrCodeDiv.getAttribute('class');
+    function rowTemplate(eventListId, defaultName = '', inputType = 'text') {
+        return `
+        <td>
+            <input class="form-control" required type="text" value="${defaultName}">
+            <div class="invalid-feedback">
+                Name is required.
+            </div>
+        </td>
+        <td>
+            <input class="form-control" required type="${inputType}">
+            <div class="invalid-feedback">
+                Please provide a valid ${inputType}.
+            </div>
+        </td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#${eventListId}">
+                <i class="bi bi-card-checklist">事件</i>
+            </button>
+            ${eventTemplate(eventListId)}
+        </td>
+        <td>
+            <button class="btn btn-danger" type="button">
+                <i class="bi bi-trash">刪除</i>
+            </button>
+        </td>`;
+    }
 
-        switch (selectObj.value) {
-            case 'Slack':
-            case 'Microsoft Teams':
-                if (urlClassAttr !== null && !urlClassAttr.includes('show')) {
-                    webhookUrlDiv.setAttribute('class', urlClassAttr + ' show');
-                }
+    function eventTemplate(id) {
+        return `
+        <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
+             id="${id}" tabIndex="-1">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title">選擇事件</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion-item">
+                            <button aria-controls="succAuthzCollapse" aria-expanded="true"
+                                    class="accordion-button"
+                                    data-bs-target="#succAuthzCollapse${id}"
+                                    data-bs-toggle="collapse" type="button">
+                                授權
+                            </button>
 
-                if (qrClassAttr !== null && qrClassAttr.includes('show')) {
-                    qrCodeDiv.setAttribute('class', qrClassAttr.replace(' show', ''));
-                }
+                            <div class="accordion-collapse collapse show" id="succAuthzCollapse${id}">
+                                <div class="accordion-body">
+                                    <div class="my-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="authzStart" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">開始</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="authzSucc" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">成功</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="authzFail" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">失敗</label>
+                                        </div>
+                                    </div>
 
-                console.log('show input');
-                break;
-            case 'Line':
-                if (urlClassAttr !== null && urlClassAttr.includes('show')) {
-                    webhookUrlDiv.setAttribute('class', urlClassAttr.replace(' show', ''));
-                }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button aria-controls="failAuthzCollapse" aria-expanded="false"
+                                    class="accordion-button collapsed"
+                                    data-bs-target="#failAuthzCollapse${id}"
+                                    data-bs-toggle="collapse" type="button">
+                                請款
+                            </button>
 
-                if (qrClassAttr !== null && !qrClassAttr.includes('show')) {
-                    qrCodeDiv.setAttribute('class', qrClassAttr + ' show');
-                    const arr = new Uint8Array(5);
-                    window.crypto.getRandomValues(arr);
-                    let str = '';
-
-                    arr.forEach((num) => {
-                        str += num.toString(10);
-                    });
-                    qrCodeDiv.getElementsByTagName('p')[0].innerHTML = 'Personal access token: ' + str;
-                }
-                console.log('show qr code');
-
-                break;
-            default:
-                if (urlClassAttr !== null && urlClassAttr.includes('show')) {
-                    webhookUrlDiv.setAttribute('class', urlClassAttr.replace(' show', ''));
-                }
-
-                if (qrClassAttr !== null && qrClassAttr.includes('show')) {
-                    qrCodeDiv.setAttribute('class', qrClassAttr.replace(' show', ''));
-                }
-        }
+                            <div class="accordion-collapse collapse" id="failAuthzCollapse${id}">
+                                <div class="accordion-body">
+                                    <div class="my-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceStart" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">開始</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceSucc" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">成功</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceFail" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">失敗</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+                            Discard
+                        </button>
+                        <button class="btn btn-outline-primary" data-bs-target="#${id}"
+                                data-bs-toggle="modal"
+                                type="button">Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
     }
 </script>
 </body>
