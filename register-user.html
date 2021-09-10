@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Registry admin</title>
+    <title>Registry user</title>
 
     <!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">-->
 
@@ -15,28 +15,51 @@
         .container {
             max-width: 960px;
         }
+
+        /* Header */
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+        }
+
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+        }
+
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
     </style>
 </head>
 <body class="bg-light">
 
 <div class="container p-3">
-    <header class="mb-auto">
-        <div>
-            <h3 class="float-md-start mb-0">CyberSoft Notification</h3>
+    <header class="navbar navbar-light fixed-top bg-dark">
+        <div class="container-fluid">
+            <h3 class="float-md-start mb-0 navbar-brand text-white">CyberSoft Notification</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="register-admin.html">Admin register</a>
-                <a aria-current="page" class="nav-link active" href="#">User register</a>
+                <a aria-current="page" class="nav-link" href="register-admin.html">Admin Subscribe</a>
+                <a class="nav-link active" href="#">User Subscribe</a>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main class="pt-5">
         <div class="py-5 text-center">
             <img alt="logo" class="d-block mx-auto mb-4" height="60"
-                 src="https://www.cybersoft4u.com/images/layout/logo.png">
-            <h2>註冊表單</h2>
-            <p class="lead">根據需求選擇需要的項目並送出</p>
+                 src="assets/img/logo.png">
+            <h2>訂閱設定</h2>
+            <p class="lead">選擇想接收到的通知</p>
         </div>
 
 
@@ -46,13 +69,12 @@
                     <fieldset>
                         <legend>信箱</legend>
                         <div class="table-responsive">
-                            <table class="table table-hover caption-top" id="emailTable">
-                                <caption>Email</caption>
+                            <table class="table table-hover" id="emailTable">
                                 <thead class="table-dark container">
                                 <tr class="row-cols-12">
                                     <th class="col-3" scope="col">名稱</th>
                                     <th class="col-5" scope="col">Email</th>
-                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col" scope="col">通知</th>
                                     <th class="col" scope="col">操作</th>
                                 </tr>
                                 </thead>
@@ -99,13 +121,12 @@
                     <fieldset>
                         <legend>簡訊</legend>
                         <div class="table-responsive">
-                            <table class="table table-hover caption-top" id="smsTable">
-                                <!--                                <caption>Phone</caption>-->
+                            <table class="table table-hover" id="smsTable">
                                 <thead class="table-dark container">
                                 <tr class="row-cols-12">
                                     <th class="col-3" scope="col">名稱</th>
                                     <th class="col-5" scope="col">電話號碼</th>
-                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col" scope="col">通知</th>
                                     <th class="col" scope="col">操作</th>
                                 </tr>
                                 </thead>
@@ -154,49 +175,31 @@
                         <div class="d-flex justify-content-center">
                             <div class="align-middle">
                                 <img alt="LINE QR code" class="img-fluid" src="assets/img/line-qrcode.png">
-                                <p id="personalToken">Token:</p>
                             </div>
                         </div>
 
-                        <h3>操作說明</h3>
+                        <h4>操作說明</h4>
                         <ol>
                             <li>掃描QR Code 加入官方帳號</li>
-                            <li>複製頁面上的身份驗證碼，並傳送給機器人即完成身份認證</li>
+                            <li>複製每個通知對應的 <i>Token</i></li>
+                            <li>送出表單</li>
+                            <li>將複製的所有 <i>Token</i> 傳送給機器人即完成</li>
                         </ol>
 
 
-                        <!--<div class="table-responsive">
+                        <div class="table-responsive">
                             <table class="table table-hover caption-top" id="lineTable">
                                 <caption>LINE</caption>
                                 <thead class="table-dark container">
                                 <tr class="row-cols-12">
                                     <th class="col-3" scope="col">名稱</th>
-                                    <th class="col-5" scope="col">Webhook URL</th>
-                                    <th class="col" scope="col">訂閱事件</th>
+                                    <th class="col-5" scope="col">Notification Token</th>
+                                    <th class="col" scope="col">通知</th>
                                     <th class="col" scope="col">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                &lt;!&ndash;<tr>
-                                    <td>
-                                        <input class="form-control" required type="text">
-                                    </td>
-                                    <td>
-                                        <input class="form-control" required type="url">
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-target="#staticBackdrop"
-                                                data-bs-toggle="modal"
-                                                type="button">
-                                            <i class="bi bi-card-checklist">事件</i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-danger" type="button">
-                                            <i class="bi bi-trash">刪除</i>
-                                        </button>
-                                    </td>
-                                </tr>&ndash;&gt;
+
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -207,93 +210,9 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                        </div>-->
+                        </div>
                     </fieldset>
 
-                    <!--<div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
-                         id="staticBackdrop" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header border-bottom-0">
-                                    <h5 class="modal-title">選擇事件</h5>
-                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
-                                            type="button"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="accordion-item">
-                                        <button aria-controls="succAuthzCollapse" aria-expanded="true"
-                                                class="accordion-button"
-                                                data-bs-target="#succAuthzCollapse"
-                                                data-bs-toggle="collapse" type="button">
-                                            授權
-                                        </button>
-
-                                        <div class="accordion-collapse collapse show" id="succAuthzCollapse">
-                                            <div class="accordion-body">
-                                                <div class="my-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="authzStart" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">開始</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="authzSucc" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">成功</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="authzFail" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">失敗</label>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <button aria-controls="failAuthzCollapse" aria-expanded="false"
-                                                class="accordion-button collapsed"
-                                                data-bs-target="#failAuthzCollapse"
-                                                data-bs-toggle="collapse" type="button">
-                                            請款
-                                        </button>
-
-                                        <div class="accordion-collapse collapse" id="failAuthzCollapse">
-                                            <div class="accordion-body">
-                                                <div class="my-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="invoiceStart" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">開始</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="invoiceSucc" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">成功</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" id="invoiceFail" name="eventStatus"
-                                                               type="checkbox">
-                                                        <label class="form-check-label">失敗</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
-                                        Discard
-                                    </button>
-                                    <button class="btn btn-outline-primary" data-bs-target="#staticBackdrop"
-                                            data-bs-toggle="modal"
-                                            type="button">Save changes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
             </div>
 
@@ -301,7 +220,7 @@
                 <div class="col">
                     <hr class="my-4">
 
-                    <button class="w-100 btn btn-primary" type="submit">Submit</button>
+                    <button class="w-100 btn btn-warning" type="submit">Submit</button>
                 </div>
             </div>
         </form>
@@ -345,33 +264,51 @@
                 }
             });
 
-            const btnAdd = table.querySelector('tfoot button');
+            const buttons = table.querySelectorAll('tfoot button');
+            const btnAdd = buttons.length === 1 ? buttons[0] : buttons.find(btn => btn.firstElementChild.matches('i.bi.bi-plus'));
+
             // Add a row
             btnAdd.addEventListener('click', function () {
-                let type;
+                let columnTag, inputType;
                 switch (table.id) {
                     case 'emailTable':
-                        type = 'email';
+                        columnTag = 'input';
+                        inputType = 'email';
                         break;
                     case 'smsTable':
-                        type = 'tel';
+                        columnTag = 'input';
+                        inputType = 'tel';
                         break;
                     case 'lineTable':
-                        type = 'url';
+                        columnTag = 'p';
+                        inputType = '';
                         break;
                     default:
-                        type = 'text';
+                        inputType = 'text';
                 }
 
                 const row = table.getElementsByTagName('tbody')[0].insertRow();
-                row.innerHTML = rowTemplate('event' + globalCount.toString(10), '', type);
+                row.innerHTML = rowTemplate('event' + globalCount.toString(10), '', columnTag, inputType);
                 globalCount++;
             });
         });
-        document.getElementById('personalToken').innerHTML = `<b>Token: ${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}</b>`;
     })();
 
-    function rowTemplate(eventListId, defaultName = '', inputType = 'text') {
+    function columnTemplate(tag, arg = 'text') {
+        if (tag === 'input') {
+            return `
+            <input class="form-control" required type="${arg}">
+            <div class="invalid-feedback">
+                Please provide a valid ${arg}.
+            </div>`;
+        }
+        return `
+        <p>
+            ${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}
+        </p>`;
+    }
+
+    function rowTemplate(eventListId, defaultName = '', columnTag = 'input', inputType = 'text') {
         return `
         <td>
             <input class="form-control" required type="text" value="${defaultName}">
@@ -380,20 +317,17 @@
             </div>
         </td>
         <td>
-            <input class="form-control" required type="${inputType}">
-            <div class="invalid-feedback">
-                Please provide a valid ${inputType}.
-            </div>
+            ${columnTemplate(columnTag, inputType)}
         </td>
         <td>
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#${eventListId}">
-                <i class="bi bi-card-checklist">事件</i>
+                <i class="bi bi-card-checklist"></i>
             </button>
             ${eventTemplate(eventListId)}
         </td>
         <td>
             <button class="btn btn-danger" type="button">
-                <i class="bi bi-trash">刪除</i>
+                <i class="bi bi-trash"></i>
             </button>
         </td>`;
     }
