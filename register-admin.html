@@ -279,7 +279,7 @@
             });
 
             const buttons = table.querySelectorAll('tfoot button');
-            const btnAdd = buttons.length == 1 ? buttons[0] : buttons.find(btn => btn.firstElementChild.matches('i.bi.bi-plus'));
+            const btnAdd = buttons.length === 1 ? buttons[0] : buttons.find(btn => btn.firstElementChild.matches('i.bi.bi-plus'));
 
             // Add a row
             btnAdd.addEventListener('click', function () {
@@ -341,14 +341,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="accordion-item">
-                            <button aria-controls="succAuthzCollapse" aria-expanded="true"
+                            <button aria-controls="authzCollapse" aria-expanded="true"
                                     class="accordion-button"
-                                    data-bs-target="#succAuthzCollapse${id}"
+                                    data-bs-target="#authzCollapse${id}"
                                     data-bs-toggle="collapse" type="button">
                                 授權
                             </button>
 
-                            <div class="accordion-collapse collapse show" id="succAuthzCollapse${id}">
+                            <div class="accordion-collapse collapse show" id="authzCollapse${id}">
                                 <div class="accordion-body">
                                     <div class="my-3">
                                         <div class="form-check">
@@ -372,14 +372,14 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button aria-controls="failAuthzCollapse" aria-expanded="false"
+                            <button aria-controls="settleCollapse" aria-expanded="false"
                                     class="accordion-button collapsed"
-                                    data-bs-target="#failAuthzCollapse${id}"
+                                    data-bs-target="#settleCollapse${id}"
                                     data-bs-toggle="collapse" type="button">
                                 請款
                             </button>
 
-                            <div class="accordion-collapse collapse" id="failAuthzCollapse${id}">
+                            <div class="accordion-collapse collapse" id="settleCollapse${id}">
                                 <div class="accordion-body">
                                     <div class="my-3">
                                         <div class="form-check">
@@ -396,6 +396,66 @@
                                             <input class="form-check-input" id="invoiceFail" name="eventStatus"
                                                    type="checkbox">
                                             <label class="form-check-label">失敗</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button aria-controls="presentCollapse" aria-expanded="false"
+                                    class="accordion-button collapsed"
+                                    data-bs-target="#presentCollapse${id}"
+                                    data-bs-toggle="collapse" type="button">
+                                照會
+                            </button>
+
+                            <div class="accordion-collapse collapse" id="presentCollapse${id}">
+                                <div class="accordion-body">
+                                    <div class="my-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceStart" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">開始</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceSucc" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">成功</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="invoiceFail" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">失敗</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button aria-controls="AnnCollapse" aria-expanded="false"
+                                    class="accordion-button collapsed"
+                                    data-bs-target="#AnnCollapse${id}"
+                                    data-bs-toggle="collapse" type="button">
+                                公告
+                            </button>
+
+                            <div class="accordion-collapse collapse" id="AnnCollapse${id}">
+                                <div class="accordion-body">
+                                    <div class="my-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="AnnRoutine" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">宣導</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="AnnEmergency" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">維護</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="AnnUpdate" name="eventStatus"
+                                                   type="checkbox">
+                                            <label class="form-check-label">服務狀態</label>
                                         </div>
                                     </div>
                                 </div>
