@@ -193,6 +193,7 @@
   'use strict';
 
   let globalCount = 0;
+  const bodyElement = document.getElementsByTagName('body')[0];
 
   (function () {
     const tables = [...document.getElementsByTagName('table')];
@@ -203,13 +204,22 @@
           return;
         }
 
+        let tRow;
         if (ev.target.nodeName === 'BUTTON' && ev.target.firstElementChild && ev.target.firstElementChild.matches('i.bi.bi-trash')) {
-          const row = ev.target.parentNode.parentNode;
-          row.parentNode.removeChild(row);
+          tRow = ev.target.parentNode.parentNode;
         } else if (ev.target.matches('button > i.bi.bi-trash')) {
-          const row = ev.target.parentNode.parentNode.parentNode;
-          row.parentNode.removeChild(row);
+          tRow = ev.target.parentNode.parentNode.parentNode;
         }
+
+        if (tRow === undefined) {
+          return;
+        }
+
+        const eventsBtn = tRow.getElementsByClassName('btn btn-primary')[0];
+        const modalId = eventsBtn.getAttribute('data-bs-target').substring(1);
+        const modal = document.getElementById(modalId);
+        bodyElement.removeChild(modal);
+        tRow.parentNode.removeChild(tRow);
       });
 
       const buttons = table.querySelectorAll('tfoot button');
@@ -235,8 +245,13 @@
             inputType = 'text';
         }
 
+        const rowId = 'event' + globalCount.toString(10);
         const row = table.getElementsByTagName('tbody')[0].insertRow();
-        row.innerHTML = rowTemplate('event' + globalCount.toString(10), '', columnTag, inputType);
+        row.innerHTML = rowTemplate(rowId, '', columnTag, inputType);
+
+        const modalDiv = document.createElement('template');
+        modalDiv.innerHTML = eventTemplate(rowId);
+        bodyElement.appendChild(modalDiv.content.firstChild);
         globalCount++;
       });
     });
@@ -244,21 +259,18 @@
 
   function columnTemplate(tag, arg = 'text') {
     if (tag === 'input') {
-      return `
-            <input class="form-control" required type="${arg}">
+      return `<input class="form-control" required type="${arg}">
             <div class="invalid-feedback">
                 Please provide a valid ${arg}.
             </div>`;
     }
-    return `
-        <p>
+    return `<p>
             ${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}
         </p>`;
   }
 
   function rowTemplate(eventListId, defaultName = '', columnTag = 'input', inputType = 'text') {
-    return `
-        <td>
+    return `<td>
             <input class="form-control" required type="text" value="${defaultName}">
             <div class="invalid-feedback">
                 Name is required.
@@ -271,7 +283,6 @@
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#${eventListId}">
                 <i class="bi bi-card-checklist"></i>
             </button>
-            ${eventTemplate(eventListId)}
         </td>
         <td>
             <button class="btn btn-danger" type="button">
@@ -281,8 +292,7 @@
   }
 
   function eventTemplate(id) {
-    return `
-        <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
+    return `<div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
              id="${id}" tabIndex="-1">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
